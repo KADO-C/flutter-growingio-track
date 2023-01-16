@@ -10,10 +10,10 @@
 }
 
 - (void)handleMethodCall:(FlutterMethodCall*)call result:(FlutterResult)result {
-    [self methodName:call.method andArguments:call.arguments];
+    [self methodName:call.method andArguments:call.arguments result: result];
 }
-//打点事件方法
--(void)methodName:(NSString *)methodName andArguments:(id)arguments{
+// 打点事件方法
+- (void)methodName:(NSString *)methodName andArguments:(id)arguments result:(FlutterResult)result {
     if (![arguments isKindOfClass:[NSDictionary class]] && ![methodName isEqualToString:@"clearUserId"]) {
         return ;
     }
@@ -51,6 +51,10 @@
     }
     if ([methodName isEqualToString:@"setVisitor"]) {
         [Growing setVisitor:argDic];
+    }
+    if ([methodName isEqualToString:@"handleUrl"]) {
+        NSString *url = argDic[@"url"];
+        result([Growing handleUrl:url]);
     }
 }
 

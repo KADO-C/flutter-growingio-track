@@ -1,4 +1,6 @@
 import 'dart:async';
+import 'dart:io';
+
 import 'package:flutter/services.dart';
 
 class GrowingIO {
@@ -40,5 +42,10 @@ class GrowingIO {
   static Future<Null> setVisitor(Map<String, dynamic>? variable) async {
     if (variable == null) return;
     return await _channel.invokeMethod("setVisitor", variable);
+  }
+
+  static Future<Null> handleUrl(String? url) async {
+    if (url == null || !Platform.isIOS) return;
+    return await _channel.invokeMethod("handleUrl", {"url": url});
   }
 }
