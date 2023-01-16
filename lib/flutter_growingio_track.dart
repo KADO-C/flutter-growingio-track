@@ -44,8 +44,8 @@ class GrowingIO {
     return await _channel.invokeMethod("setVisitor", variable);
   }
 
-  static Future<Null> handleUrl(String? url) async {
-    if (url == null || !Platform.isIOS) return;
+  static Future<bool?> handleUrl(String? url) async {
+    if (url == null || !Platform.isIOS) return null;
     return await _channel.invokeMethod("handleUrl", {"url": url});
   }
 }
