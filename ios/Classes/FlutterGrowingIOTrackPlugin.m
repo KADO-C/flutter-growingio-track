@@ -54,11 +54,7 @@
     }
     if ([methodName isEqualToString:@"handleUrl"]) {
         NSString *url = argDic[@"url"];
-        if ([Growing handleUrl:url]) {
-            result(@(YES));
-        } else {
-            result(@(NO));
-        }
+        result(@([Growing handleUrl:url]));
     }
 }
 
