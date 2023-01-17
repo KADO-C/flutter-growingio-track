@@ -53,7 +53,8 @@
         [Growing setVisitor:argDic];
     }
     if ([methodName isEqualToString:@"handleUrl"]) {
-        NSString *url = argDic[@"url"];
+        NSString *urlStr = argDic[@"url"];
+        NSURL * url = [NSURL URLWithString:urlStr];
         result(@([Growing handleUrl:url]));
     }
 }
